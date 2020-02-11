@@ -1,10 +1,12 @@
 #!/bin/bash
 
-
+echo boot root home &&
 pacman -Syy && pacman -S reflector && reflector --country Netherlands --country Germany --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist &&
 echo pacman is correct nu partities && cfdisk
 
 
-mkfs.ext4 /dev/sda1 && mkfs.ext4 /dev/sda2 && echo PARTION KLAAR. &&
-mount /dev/sda1 && /mnt mkdir /mnt/home && mount /dev/sda2 /mnt/home && pacstrap /mnt base linux linux-firmware vim nano &&
+mkfs.ext4 /dev/sda1 && mkfs.ext4 /dev/sda2 && mkfs.ext4 /dev/sda3 && echo PARTION KLAAR. &&
+
+mount /dev/sda3 /mnt && mkdir /mnt/home && mkdir /mnt/boot && mount /dev/sda2 /mnt/home && mount /dev/sda1 /mnt/boot &&
+pacstrap /mnt base linux linux-firmware vim nano &&
 genfstab -U /mnt >> /mnt/etc/fstab && cp barch2-install -t /mnt && arch-chroot /mnt
