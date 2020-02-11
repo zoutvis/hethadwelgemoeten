@@ -1,5 +1,11 @@
 #!/bin/bash
 
 
-timedatectl set-timezone Europe/Amsterdam && echo LANG=en_GB.UTF-8 > /etc/locale.conf && export LANG=en_GB.UTF-8 && echo barch > /etc/hostname &&
-passwd root && pacman -S grub && grub-install /dev/sda2 && grub-mkconfig -o /boot/grub/grub.cfg
+pacman -Syy && pacman -S reflector && reflector --country Netherlands --country Germany --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist &&
+echo pacman is correct nu partities && cfdisk
+
+
+mkfs.ext4 /dev/sda1 && mkfs.fat -F32  /dev/sda2 && echo PARTION KLAAR. &&
+mount /dev/sda1 /mnt && pacstrap /mnt base linux linux-firmware vim nano &&
+genfstab -U /mnt >> /mnt/etc/fstab && cp barch2-install -t /mnt && arch-chroot /mnt
+
