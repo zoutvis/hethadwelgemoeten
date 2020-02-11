@@ -5,6 +5,16 @@ pacman -Syy && pacman -S reflector && reflector --country Netherlands --country 
 echo pacman is correct nu partities && cfdisk
 
 
-mkfs.ext4 /dev/sda1 && echo PARTION KLAAR. &&
+mkfs.ext4 /dev/sda1 && mkfs.ext4 /dev/sda2 && echo PARTION KLAAR. &&
 mount /dev/sda1 /mnt && pacstrap /mnt base linux linux-firmware vim nano &&
 genfstab -U /mnt >> /mnt/etc/fstab && cp barch2-install -t /mnt && arch-chroot /mnt
+
+
+
+&& timedatectl list-timezones &&
+timedatectl set-timezone Europe/Amsterdam &&
+
+echo LANG=en_GB.UTF-8 > /etc/locale.conf && export LANG=en_GB.UTF-8 && echo barch > /etc/hostname &&
+passwd root && pacman -S grub efibootmgr && mkdir /boot/efi && mount /dev/sda2 /boot/efi &&
+grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi &&
+grub-mkconfig -o /boot/grub/grub.cfg && echo barch is done
