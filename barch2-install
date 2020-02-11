@@ -1,5 +1,5 @@
 #!/bin/bash
 
 
-timedatectl set-timezone Europe/Amsterdam && echo LANG=en_GB.UTF-8 > /etc/locale.conf && export LANG=en_GB.UTF-8 && echo barch > /etc/hostname &&
+mount /dev/sda2 /boot && timedatectl set-timezone Europe/Amsterdam && echo LANG=en_GB.UTF-8 > /etc/locale.conf && export LANG=en_GB.UTF-8 && echo barch > /etc/hostname &&
 passwd root && pacman -S grub && grub-install /dev/sda && grub-mkconfig -o /boot/grub/grub.cfg
