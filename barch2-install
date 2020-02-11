@@ -1,7 +1,0 @@
-#!/bin/bash
-
-
-timedatectl set-timezone Europe/Amsterdam && echo LANG=en_GB.UTF-8 > /etc/locale.conf && export LANG=en_GB.UTF-8 && echo barch > /etc/hostname &&
-passwd root && pacman -S grub efibootmgr && mkdir /boot/efi && mount /dev/sda2 /boot/efi &&
-grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi &&
-grub-mkconfig -o /boot/grub/grub.cfg && echo barch is done
