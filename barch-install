@@ -5,8 +5,8 @@ pacman -Syy && pacman -S reflector && reflector --country Netherlands --country 
 echo pacman is correct nu partities && cfdisk
 
 
-mkfs.fat -F32 /dev/sda1 && mkfs.ext4 /dev/vda2 && mkfs.ext4 /dev/vda3 && echo PARTION KLAAR. &&
+mkfs.fat -F32 /dev/sda1 && mkfs.ext4 /dev/sda2 && mkfs.ext4 /dev/sda3 && echo PARTION KLAAR. &&
 
-mount /dev/vda3 /mnt && mkdir /mnt/home && mkdir /mnt/boot && mount /dev/vda2 /mnt/home && mount /dev/vda1 /mnt/boot &&
+mount /dev/sda3 /mnt && mkdir /mnt/home && mkdir /mnt/boot && mount /dev/sda2 /mnt/home && mount /dev/sda1 /mnt/boot &&
 pacstrap /mnt base linux linux-firmware vim nano &&
 genfstab -U /mnt >> /mnt/etc/fstab && cp barch2-install -t /mnt && arch-chroot /mnt
