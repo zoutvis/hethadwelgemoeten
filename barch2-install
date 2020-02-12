@@ -2,4 +2,4 @@
 
 
 timedatectl set-timezone Europe/Amsterdam && echo LANG=en_GB.UTF-8 > /etc/locale.conf && export LANG=en_GB.UTF-8 && echo barch > /etc/hostname &&
-passwd root && pacman -S grub && grub-install --target=i386-pc /dev/sva1 && grub-mkconfig -o /boot/grub/grub.cfg 
+passwd root && pacman -S grub && grub-install --boot-directory=/mnt/boot /dev/vda1 && grub-mkconfig -o /boot/grub/grub.cfg 
