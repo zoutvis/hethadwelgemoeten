@@ -3,4 +3,4 @@
 
 timedatectl set-timezone Europe/Amsterdam && echo LANG=en_GB.UTF-8 > /etc/locale.conf && export LANG=en_GB.UTF-8 && locale-gen && echo barch > /etc/hostname &&
 passwd root && pacman -S grub && pacman -S efibootmgr && grub-install --target=x86_64-efi --efi-directory=/boot && grub-mkconfig -o /boot/grub/grub.cfg &&
-pacman -S xorg xorg-server && pacman -S plasma-meta && systemctl start sddm.service && systemctl enable sddm.service && systemctl enable sddm && systemctl enable NetworkManager.service && echo LAATSTE STAP locale-gen INVOEREN
+pacman -S xorg xorg-server && pacman -S plasma-meta && pacman -S lightdm && systemctl start lightdm.service && systemctl enable lightdm.service && systemctl enable Lightdm && systemctl enable NetworkManager.service && echo LAATSTE STAP locale-gen INVOEREN
