@@ -5,7 +5,7 @@ pacman -Syy && pacman -S reflector && reflector --country Netherlands --country 
 echo pacman is correct nu partities && cfdisk
 
 
-mkfs.ext4 /dev/sda2 && mkfs.fat /dev/sda1 && mkfs.ext4 /dev/sda3 && && mkswap /dev/sda4 && echo PARTION KLAAR. &&
+mkfs.ext4 /dev/sda2 && mkfs.fat /dev/sda1 && mkfs.ext4 /dev/sda3 && mkswap /dev/sda4 && echo PARTION KLAAR. &&
 
 mount /dev/sda3 /mnt && mkdir /mnt/home && mkdir /mnt/boot && mount /dev/sda2 /mnt/home && mount /dev/sda1 /mnt/boot &&
 pacstrap /mnt base linux linux-firmware vim nano &&
