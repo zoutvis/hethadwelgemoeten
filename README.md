@@ -9,8 +9,11 @@ Arch live usb
 Network 
 
 Van te voren invoeren
-pacman -Sy 
-pacman -S git 
+
+pacman -Sy
+
+pacman -S git
+
 cd hethadwelgemoeten
 
 
