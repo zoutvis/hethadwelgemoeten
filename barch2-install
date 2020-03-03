@@ -2,6 +2,6 @@
 
 
 timedatectl set-timezone Europe/Amsterdam && echo LANG=en_GB.UTF-8 > /etc/locale.conf && export LANG=en_GB.UTF-8 && locale-gen && echo barch > /etc/hostname &&
-passwd root && pacman -S grub && pacman -S efibootmgr && grub-install --target=x86_64-efi --efi-directory=/boot && grub-mkconfig -o /boot/grub/grub.cfg &&
-pacman -S xorg xorg-server && echo "exec startkde" > ~/.xinitrc && pacman -S plasma-desktop && pacman -S kde-applications-meta && pacman -S breeze-gtk breeze kde-gtk-config && 
-pacman -S sddm && systemctl start sddm.service && systemctl enable sddm.service && systemctl enable sddm && nano /usr/lib/sddm/sddm.conf.d/default.conf && pacman -S networkmanager plasma-nm && systemctl enable NetworkManager.service && pacman -S konsole dolphin firefox kate && echo LAATSTE STAP locale-gen INVOEREN
+passwd root && pacman -S --noconfirm grub && pacman -S --noconfirm efibootmgr && grub-install --target=x86_64-efi --efi-directory=/boot && grub-mkconfig -o /boot/grub/grub.cfg &&
+pacman -S --noconfirm xorg xorg-server && echo "exec startkde" > ~/.xinitrc && pacman -S --noconfirm plasma-desktop && pacman -S --noconfirm kde-applications-meta && pacman -S --noconfirm breeze-gtk breeze kde-gtk-config && 
+pacman -S --noconfirm sddm && systemctl start sddm.service && systemctl enable sddm.service && systemctl enable sddm && nano /usr/lib/sddm/sddm.conf.d/default.conf && pacman -S --noconfirm networkmanager plasma-nm && systemctl enable NetworkManager.service && pacman -S --noconfirm konsole dolphin firefox kate && echo LAATSTE STAP locale-gen INVOEREN
