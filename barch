@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo boot root home swap && chmod 777 barch2-install &&
-pacman -Syy && pacman -S reflector && reflector --country Netherlands --country Germany --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist &&
+pacman --noconfirm -Sy && pacman -S --noconfirm reflector && reflector --country Netherlands --country Germany --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist &&
 echo pacman is correct nu partities && cfdisk
 
 
