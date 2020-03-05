@@ -1,44 +1,19 @@
 #!/bin/bash
+
+pacman --noconfirm -Sy && pacman -S --noconfirm reflector && reflector --country Netherlands --country Germany --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist &&
+
 mkfs.fat -F32 /dev/sdb1 && mkfs.ext4 /dev/sdb2 && mkswap /dev/sdb3 && swapon /dev/sdb3 &&
 
 mount /dev/sdb2 /mnt %% mkdir /mnt/boot && mount /dev/sdb1 /mnt/boot &&
-
-pacman --noconfirm -Sy && pacman -S --noconfirm reflector &&
-
-reflector --country Netherlands --country Germany --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist &&
-
 pacstrap /mnt base linux linux-firmware vim nano &&
-
 genfstab -U /mnt > /mnt/etc/fstab &&
 
-arch-chroot /mnt &&
+arch-chroot /mnt && timedatectl set-timezone Europe/Amsterdam && echo en_GB.UTF-8 UTF-8 > /etc/locale.gen && locale-gen && echo LANG=en_US.UTF-8 > /etc/locale.conf && echo Barch > /etc/hostname &&
+passwd root && pacman -S grub efibootmgr && grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB && grub-mkconfig -o /boot/grub/grub.cfg
 
-echo en_GB.UTF-8 UTF-8 > /etc/locale.gen &&
+pacman -S --noconfirm xorg xorg-server && echo "exec startkde" > ~/.xinitrc && pacman -S --noconfirm plasma-desktop kde-applications-meta breeze-gtk breeze kde-gtk-config && 
 
-locale.gen &&
+pacman -S --noconfirm sddm && systemctl enable sddm.service && systemctl enable sddm && sed -i ‘s/Current=/Current=breeze/’ /usr/lib/sddm/sddm.conf.d/default.conf &&
 
-echo LANG=en_US.UTF-8 > /etc/locale.conf &&
-
-echo Barch > /etc/hostname &&
-
-passwd root &&
-
-pacman -S grub efibootmgr &&
-
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
-
-pacman -S --noconfirm xorg xorg-server && 
-echo "exec startkde" > ~/.xinitrc && 
-pacman -S --noconfirm plasma-desktop kde-applications-meta breeze-gtk breeze kde-gtk-config && 
-
-pacman -S --noconfirm sddm && 
-systemctl enable sddm.service && 
-systemctl enable sddm &&
-sed -i ‘s/Current=/Current=breeze/’ /usr/lib/sddm/sddm.conf.d/default.conf &&
-
-pacman -S --noconfirm networkmanager plasma-nm &&
-systemctl enable NetworkManager.service &&
-pacman -S --noconfirm konsole dolphin firefox kate 
-echo Klaar laten we rebooten
-echo rebooting in 10 seconds
-reboot -h -t 10
+pacman -S --noconfirm networkmanager plasma-nm && systemctl enable NetworkManager.service && pacman -S --noconfirm konsole dolphin firefox kate
+exit 
