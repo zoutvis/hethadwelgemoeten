@@ -1,28 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-out {
-  border: 2px solid gray;
-  margin: 10px 0px ;
-  padding: 3px;
-  background-color: #ebf1f5;
-  font-family: monospace;
-  font-size: 15px;
-}
 
-h3 {
-	margin: 10px 0px;
-	
-}
-
-h4 {
-	font-family: sans-serif;
-	font-weight: 1;
-	font-size: 13px;
-
-}
-</style>
 </head>
 <body>
 
